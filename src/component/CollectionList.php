@@ -12,7 +12,7 @@ use Illuminate\Support\Collection;
  * Class CollectionRenderer
  * @package App\Component
  */
-class CollectionRenderer
+class CollectionList
 {
     /**
      * @var string
