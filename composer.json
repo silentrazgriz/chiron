@@ -1,0 +1,23 @@
+{
+    "name": "gaia/chiron",
+    "description": "List builder package for laravel",
+    "authors": [
+        {
+            "name": "Valentino Ekaputra",
+            "email": "silentrazgriz@gmail.com"
+        }
+    ],
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Gaia\\Chiron\\ChironServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Gaia\\Chiron\\": "src/"
+        }
+    }
+}
