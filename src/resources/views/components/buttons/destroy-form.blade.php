@@ -1,7 +1,7 @@
 @if($options['actions']['destroy'])
     <form
         method="POST"
-        action="{{ $options['route']['destroy'] ?? route($options['route']['default'] . '.destroy', $collection['id']) }}"
+        action="{{ (null == $options['route']['destroy'] ? route($options['route']['default'] . '.destroy', $collection['id']) : $options['route']['destroy'] . $collection['id']) }}"
         id="delete-{{ $collection['id'] }}"
     >
         @csrf
