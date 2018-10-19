@@ -17,7 +17,7 @@
             </div>
         </div>
     </div>
-@endsection
+@append
 
 @section('scripts')
     @if(!isset($chiron['delete-script']))
