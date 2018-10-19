@@ -7,7 +7,9 @@
             "email": "silentrazgriz@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "php": ">=7.2.0"
+    },
     "extra": {
         "laravel": {
             "providers": [

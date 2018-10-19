@@ -9,7 +9,13 @@ return [
             'destroy' => false,
             'search' => false
         ],
-        'route' => 'root',
+        'route' => [
+            'default' => 'root',
+            'show' => null,
+            'create' => null,
+            'update' => null,
+            'destroy' => null
+        ],
     ],
     'paginate' => [
         'per-page' => 15
