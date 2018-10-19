@@ -1,5 +1,3 @@
-@extends('base')
-
 @section('content')
     @php($options = $chiron['options'])
     <div class="row">

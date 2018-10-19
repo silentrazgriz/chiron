@@ -66,7 +66,7 @@ class CollectionList
      */
     public function render()
     {
-        return view('chiron::list', [
+        return view('chiron::core', [
             'chiron' => $this->toArray($this->items->paginate())
         ]);
     }
