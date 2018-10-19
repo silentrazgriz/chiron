@@ -67,22 +67,21 @@ class CollectionList
     public function render()
     {
         return view('chiron::core', [
-            'chiron' => $this->toArray($this->items->paginate())
+            'chiron' => $this->toArray()
         ]);
     }
 
     /**
-     * @param LengthAwarePaginator $items
      * @return array
      */
-    public function toArray(LengthAwarePaginator $items)
+    public function toArray()
     {
         return [
             'title' => $this->title,
             'fields' => $this->fields,
             'options' => $this->options,
-            'collections' => $items->toArray(),
-            'links' => $items->links('chiron::components.pagination.bootstrap-4')
+            'collections' => $this->items->paginate()->toArray(),
+            'links' => $this->items->paginate()->links('chiron::components.pagination.bootstrap-4')
         ];
     }
 }
