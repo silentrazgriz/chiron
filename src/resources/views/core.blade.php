@@ -1,3 +1,5 @@
 @extends('base')
 
-@include('chiron::list')
+@section('content')
+    @include('chiron::list')
+@append

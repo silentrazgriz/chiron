@@ -1,23 +1,21 @@
-@section('content')
-    @php($options = $chiron['options'])
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    {{ $chiron['title'] }}
-                </div>
-                <div class="card-body">
-                    @include('chiron::components.header')
-                    <table class="table table-hover mb-2">
-                        @include('chiron::components.rows.title')
-                        @include('chiron::components.rows.content')
-                    </table>
-                    @include('chiron::components.pagination')
-                </div>
+@php($options = $chiron['options'])
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                {{ $chiron['title'] }}
+            </div>
+            <div class="card-body">
+                @include('chiron::components.header')
+                <table class="table table-hover mb-2">
+                    @include('chiron::components.rows.title')
+                    @include('chiron::components.rows.content')
+                </table>
+                @include('chiron::components.pagination')
             </div>
         </div>
     </div>
-@append
+</div>
 
 @section('scripts')
     @if(!isset($chiron['delete-script']))
