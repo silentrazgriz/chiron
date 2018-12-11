@@ -17,6 +17,7 @@ class ChironServiceProvider extends ServiceProvider
         $this->loadViewsFrom(realpath(__DIR__ . '/resources/views'), 'chiron');
         $this->publishes([
             __DIR__ . '/resources/views' => resource_path('views/vendor/chiron'),
+            __DIR__ . '/public' => public_path(),
             __DIR__ . '/config' => config_path()
         ]);
     }
