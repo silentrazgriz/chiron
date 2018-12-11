@@ -1,8 +1,7 @@
-<thead>
+<tfoot>
 <tr>
     @foreach($chiron['fields'] as $field)
-        @php($colTitle = ucwords($field['label']))
-        @include('chiron::components.titles.' . $field['type'])
+        <th scope="col">{{ ucwords($field['label']) }}</th>
     @endforeach
     @if(
         $options['actions']['detail'] ||
@@ -12,4 +11,4 @@
         <th scope="col" class="action text-center">Action</th>
     @endif
 </tr>
-</thead>
+</tfoot>

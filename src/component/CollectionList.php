@@ -30,9 +30,9 @@ class CollectionList
     protected $options = [];
 
     /**
-     * @var Collection
+     * @var string
      */
-    protected $items;
+    protected $source;
 
     /**
      * CollectionRenderer constructor.
@@ -54,11 +54,11 @@ class CollectionList
     }
 
     /**
-     * @param Collection $items
+     * @param string $source
      */
-    public function setCollection(Collection $items)
+    public function setSource(string $source)
     {
-        $this->items = $items;
+        $this->source = $source;
     }
 
     /**
@@ -80,8 +80,7 @@ class CollectionList
             'title' => $this->title,
             'fields' => $this->fields,
             'options' => $this->options,
-            'collections' => $this->items->paginate()->toArray(),
-            'links' => $this->items->paginate()->links('chiron::components.pagination.bootstrap-4')
+            'source' => $this->source,
         ];
     }
 }

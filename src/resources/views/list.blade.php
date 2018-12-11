@@ -1,17 +1,17 @@
 @php($options = $chiron['options'])
+@php($id = 'dt-'.strtolower(str_replace(' ', '-', $chiron['title'])))
 <div class="row">
     <div class="col">
         <div class="card">
             <div class="card-header">
                 {{ $chiron['title'] }}
             </div>
-            <div class="card-body">
+            <div id="{{ $id }}" class="card-body">
                 @include('chiron::components.header')
-                <table class="table table-hover mb-2">
-                    @include('chiron::components.rows.title')
-                    @include('chiron::components.rows.content')
+                <table class="data-table table table-hover mb-2">
+                    @include('chiron::components.rows.header')
+                    @include('chiron::components.rows.footer')
                 </table>
-                @include('chiron::components.pagination')
             </div>
         </div>
     </div>
@@ -29,4 +29,13 @@
         </script>
         @php($chiron['delete-script'] = true)
     @endif
+    <script>
+        $(function() {
+            $('#{{ $id }}').DataTable({
+                'processing': true,
+                'serverSide': true,
+                'ajax': '{{ $chiron['source'] }}'
+            });
+        });
+    </script>
 @append
