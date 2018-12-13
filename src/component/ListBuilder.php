@@ -19,11 +19,11 @@ class ListBuilder
      * @return mixed
      * @throws \ReflectionException
      */
-    public static function build($className, $args, $collection)
+    public static function build($className, $args, $source)
     {
         $class = new ReflectionClass($className);
         $instance = $class->newInstanceArgs($args);
-        $instance->setCollection($collection);
+        $instance->setSource($source);
         return $instance;
     }
 
@@ -34,9 +34,9 @@ class ListBuilder
      * @return mixed
      * @throws \ReflectionException
      */
-    public static function buildRender($className, $args, $collection)
+    public static function buildRender($className, $args, $source)
     {
-        return ListBuilder::build($className, $args, $collection)->render();
+        return ListBuilder::build($className, $args, $source)->render();
     }
 
     /**
@@ -46,8 +46,8 @@ class ListBuilder
      * @return mixed
      * @throws \ReflectionException
      */
-    public static function buildArray($className, $args, $collection)
+    public static function buildArray($className, $args, $source)
     {
-        return ListBuilder::build($className, $args, $collection)->toArray();
+        return ListBuilder::build($className, $args, $source)->toArray();
     }
 }

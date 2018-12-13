@@ -62,6 +62,14 @@ class CollectionList
     }
 
     /**
+     * @return array
+     */
+    public function getOptions()
+    {
+        return $this->options;
+    }
+
+    /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function render()
@@ -76,6 +84,16 @@ class CollectionList
      */
     public function toArray()
     {
+        if ($this->options['actions']['detail'] || $this->options['actions']['update'] || $this->options['actions']['destroy']) {
+            array_push($this->fields, [
+                'data' => 'action',
+                'label' => 'Action',
+                'type' => 'html',
+                'orderable' => false,
+                'searchable' => false
+            ]);
+        }
+
         return [
             'title' => $this->title,
             'fields' => $this->fields,
