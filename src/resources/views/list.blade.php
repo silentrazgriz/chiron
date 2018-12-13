@@ -6,9 +6,9 @@
             <div class="card-header">
                 {{ $chiron['title'] }}
             </div>
-            <div id="{{ $id }}" class="card-body">
+            <div class="card-body">
                 @include('chiron::components.header')
-                <table class="data-table table table-hover mb-2">
+                <table id="{{ $id }}" class="data-table table table-hover mb-2">
                     @include('chiron::components.rows.header')
                     @include('chiron::components.rows.footer')
                 </table>
@@ -34,7 +34,9 @@
             $('#{{ $id }}').DataTable({
                 'processing': true,
                 'serverSide': true,
-                'ajax': '{{ $chiron['source'] }}'
+                'ajax': '{{ $chiron['source'] }}',
+                'responsive': true,
+                'columns': JSON.parse('{!! json_encode($chiron['fields']) !!}'),
             });
         });
     </script>
