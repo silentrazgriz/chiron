@@ -18,17 +18,6 @@
 </div>
 
 @section('scripts')
-    @if(!isset($chiron['delete-script']))
-        <script>
-            $('.delete-item').each((index, item) => {
-                item.addEventListener('click', (e) => {
-                    let target = item.dataset.target;
-                    $(target)[0].submit();
-                });
-            });
-        </script>
-        @php($chiron['delete-script'] = true)
-    @endif
     <script>
         $(function() {
             $('#{{ $id }}').DataTable({
@@ -38,6 +27,17 @@
                 'responsive': true,
                 'columns': JSON.parse('{!! json_encode($chiron['fields']) !!}'),
             });
+            @if(!isset($chiron['delete-script']))
+                $('#{{ $id }}').on('draw', function () {
+                    $('.delete-item').each((index, item) => {
+                        item.addEventListener('click', (e) => {
+                            let target = item.dataset.target;
+                            $(target)[0].submit();
+                        });
+                    });
+                });
+                @php($chiron['delete-script'] = true)
+            @endif
         });
     </script>
 @append
