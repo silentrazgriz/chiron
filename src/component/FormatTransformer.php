@@ -16,20 +16,22 @@ class FormatTransformer
 
         foreach ($fields as $field) {
             $data->editColumn($field['data'], function ($item) use ($field) {
+                $target = data_get($item, $field['data']);
+
                 if ($field['type'] == 'number') {
-                    $item = number_format($item);
+                    $target = number_format($target);
                 } else if ($field['type'] == 'capacity') {
-                    $item = number_format($item, 3);
+                    $target = number_format($target, 3);
                 }
 
                 if (isset($field['prefix'])) {
-                    $item = $field['prefix'].' '.$item;
+                    $target = $field['prefix'].' '.$target;
                 }
                 if (isset($field['suffix'])) {
-                    $item = $item.' '.$field['suffix'];
+                    $target = $target.' '.$field['suffix'];
                 }
 
-                return $item;
+                return $target;
             });
         }
 
