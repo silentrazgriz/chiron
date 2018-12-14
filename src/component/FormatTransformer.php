@@ -15,24 +15,26 @@ class FormatTransformer
         $fields = $list->getFields();
 
         foreach ($fields as $field) {
-            $data->editColumn($field['data'], function ($item) use ($field) {
-                $target = data_get($item, $field['data']);
+            if (!in_array($field['type'], ['text', 'html'])) {
+                $data->editColumn($field['data'], function ($item) use ($field) {
+                    $target = data_get($item, $field['data']);
 
-                if ($field['type'] == 'number') {
-                    $target = number_format($target);
-                } else if ($field['type'] == 'capacity') {
-                    $target = number_format($target, 3);
-                }
+                    if ($field['type'] == 'number') {
+                        $target = number_format($target);
+                    } else if ($field['type'] == 'capacity') {
+                        $target = number_format($target, 3);
+                    }
 
-                if (isset($field['prefix'])) {
-                    $target = $field['prefix'].' '.$target;
-                }
-                if (isset($field['suffix'])) {
-                    $target = $target.' '.$field['suffix'];
-                }
+                    if (isset($field['prefix'])) {
+                        $target = $field['prefix'] . ' ' . $target;
+                    }
+                    if (isset($field['suffix'])) {
+                        $target = $target . ' ' . $field['suffix'];
+                    }
 
-                return $target;
-            });
+                    return $target;
+                });
+            }
         }
 
         return $data;
