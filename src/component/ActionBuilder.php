@@ -12,7 +12,7 @@ class ActionBuilder
     {
         $options = $list->getOptions();
         if (!$options['actions']['detail'] && !$options['actions']['update'] && !$options['actions']['destroy']) {
-            return;
+            return $data;
         }
         
         $data->map(function (&$item) use ($list) {
