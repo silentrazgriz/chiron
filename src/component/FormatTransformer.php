@@ -20,9 +20,9 @@ class FormatTransformer
                     $target = data_get($item, $field['data']);
 
                     if ($field['type'] == 'number') {
-                        $target = number_format($target);
+                        $target = number_format(floatval($target));
                     } else if ($field['type'] == 'capacity') {
-                        $target = number_format($target, 3);
+                        $target = number_format(floatval($target), 3);
                     }
 
                     if (isset($field['prefix'])) {
