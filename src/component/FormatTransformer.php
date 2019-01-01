@@ -14,6 +14,14 @@ class FormatTransformer
     {
         $fields = $list->getFields();
 
+        $raws = ['action'];
+        foreach ($fields as $field) {
+            if (in_array($field['type'], ['detail'])) {
+                array_push($raws, $field['data']);
+            }
+        }
+        $data->rawColumns($raws);
+
         foreach ($fields as $field) {
             if (!in_array($field['type'], ['text', 'html'])) {
                 $data->editColumn($field['data'], function ($item) use ($field) {
@@ -23,6 +31,11 @@ class FormatTransformer
                         $target = number_format(floatval($target), 0, '.', ' ');
                     } else if ($field['type'] == 'capacity') {
                         $target = number_format(floatval($target), 3, '.', ' ');
+                    } if ($field['type'] == 'detail') {
+                        $id = data_get($item, 'id');
+                        if (null != $id) {
+                            $target = '<a href="' . route($field['route'], $id) . '">' . $target . '</a>';
+                        }
                     }
 
                     if (isset($field['prefix'])) {
