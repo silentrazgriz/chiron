@@ -30,7 +30,7 @@ class FormatTransformer
                     if ($field['type'] == 'number') {
                         $target = number_format(floatval($target), 0, '.', ' ');
                     } else if ($field['type'] == 'capacity') {
-                        $target = number_format(floatval($target), 3, '.', ' ');
+                        $target = number_format(floatval($target), 2, '.', ' ');
                     } if ($field['type'] == 'detail') {
                         $id = data_get($item, 'id');
                         if (null != $id) {
