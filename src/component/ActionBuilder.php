@@ -11,7 +11,7 @@ class ActionBuilder
     public static function build(CollectionList $list, Collection $data)
     {
         $options = $list->getOptions();
-        if (!$options['actions']['detail'] && !$options['actions']['update'] && !$options['actions']['destroy']) {
+        if (!$options['actions']['update'] && !$options['actions']['destroy']) {
             return $data;
         }
         
