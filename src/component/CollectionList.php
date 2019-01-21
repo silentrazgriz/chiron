@@ -92,7 +92,7 @@ class CollectionList
      */
     public function toArray()
     {
-        if ($this->options['actions']['detail'] || $this->options['actions']['update'] || $this->options['actions']['destroy']) {
+        if ($this->options['actions']['update'] || $this->options['actions']['destroy']) {
             array_push($this->fields, [
                 'data' => 'action',
                 'label' => 'Action',
